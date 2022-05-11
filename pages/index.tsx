@@ -64,8 +64,12 @@ const Home: NextPage = () => {
       .then((res) =>
         setNoti({ type: 'success', text: 'SuccessFully Updated', show: true })
       )
-      .catch((err) =>
-        setNoti({ type: 'error', text: 'Please try Again', show: true })
+      .catch((err: any) =>
+        setNoti({
+          type: 'error',
+          text: err.response.data.message,
+          show: true,
+        })
       );
   };
   const fetchData = async () => {
